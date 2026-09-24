@@ -1,0 +1,9 @@
+{
+  "name": "assisted-installer-skills",
+  "version": "0.2.0",
+  "description": "Shared, bounded skills for the Assisted Installer engineering team.",
+  "author": {
+    "name": "OpenShift Assisted Installer team"
+  },
+  "license": "MIT"
+}

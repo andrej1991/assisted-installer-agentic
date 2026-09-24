@@ -1,0 +1,22 @@
+{
+  "name": "assisted-installer-skills",
+  "version": "0.2.0",
+  "description": "Shared, bounded skills for the Assisted Installer engineering team.",
+  "author": {
+    "name": "OpenShift Assisted Installer team"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Assisted Installer Skills",
+    "shortDescription": "Shared skills for Assisted Installer engineering teams.",
+    "longDescription": "Provides reusable, bounded skills for common Assisted Installer engineering tasks.",
+    "developerName": "OpenShift Assisted Installer team",
+    "category": "Developer Tools",
+    "capabilities": ["Read"],
+    "defaultPrompt": [
+      "Use an Assisted Installer skill to help with this engineering task.",
+      "Which Assisted Installer skill best fits this task?"
+    ]
+  }
+}

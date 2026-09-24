@@ -1,0 +1,12 @@
+# Local harness settings and state
+.codex/
+.cursor/
+.gemini/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+
+# OS metadata and tool update markers
+.DS_Store
+.update-available

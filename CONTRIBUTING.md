@@ -1,0 +1,91 @@
+# Contributing
+
+## Skill structure
+
+Each plugin is a self-contained directory under `plugins/`:
+
+```text
+plugin-name/
+  .claude-plugin/plugin.json
+  .codex-plugin/plugin.json
+  skills/
+    skill-name/
+      SKILL.md
+      references/                  # optional supporting material
+      scripts/                     # optional deterministic helpers
+      assets/                      # optional generated-output assets
+```
+
+Each skill is an immediate child of `skills/` so Codex and Claude can discover
+it from the marketplace without generated wrappers.
+
+`assisted-installer-skills` contains reusable, independently usable skills.
+Separate workflow plugins can provide end-to-end orchestration. A workflow
+uses shared skills through their documented public contracts and normal harness
+discovery, instruction loading, and invocation. Avoid private installation paths
+and on-disk handoffs. A skill explicitly named for a workflow step is
+required: use it, including in delegated work, or stop that step and report why
+it is unavailable. Do not silently substitute a different skill or reimplement
+its instructions. Required shared-plugin dependencies are declared in the Claude
+manifest; do not add undocumented dependency fields to the Codex manifest.
+
+Do not add harness-specific syntax to canonical skill instructions. The
+plugin manifests and marketplace catalogs provide the harness integration.
+
+Keep plugin Markdown links inside their plugin, including reference-style
+links and symlink targets. Repository documentation can link across plugins.
+Both marketplace catalogs must register every directory under `plugins/` exactly
+once at its canonical path. Each plugin's Claude and Codex manifests must agree
+on name and version; different plugins may have independent versions.
+
+## Skill contract
+
+Every skill must document:
+
+- Required inputs and prerequisites.
+- Read-only discovery and external capabilities.
+- Returned results and any optional file output.
+- Approval checkpoints before remote mutations.
+- A useful result status and a stopping condition.
+
+## Versioning
+
+Skill frontmatter uses the standard `name` and `description` metadata; do not
+add a repository-specific skill version. Changes to distributed skill behavior
+should update the plugin manifest and marketplace release metadata when a new
+plugin release is intended.
+
+## Development dependencies
+
+- [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2#install) on
+  your `PATH` for Markdown formatting checks.
+- [Lychee](https://lychee.cli.rs/guides/getting-started/) on your `PATH` for
+  Markdown link checks.
+- Python 3.10 or later for structural validation and tests.
+- Make to run the check targets.
+
+These tools are not required to use the plugins.
+
+## Checks
+
+Run before submitting changes:
+
+```bash
+make validate
+make test
+```
+
+`make validate` runs the Python validator for frontmatter, names, plugin-local
+link boundaries, matching manifests, catalog coverage, and local Claude dependency
+registration. It then runs markdownlint-cli2 with `.markdownlint-cli2.yaml` for
+Markdown formatting and Lychee with `.lychee.toml` for local Markdown links.
+Lychee runs offline, so it does not check external URL availability. The lint CI
+job uses the same configurations and Markdown glob.
+
+`make test` runs regression tests for the Python validator, including validation
+of the current repository. It also copies each plugin into a temporary directory
+to validate its manifests, skills, and references independently of the checkout.
+Dependencies remain separate plugins and must be installed by the
+consuming harness. Marketplace installation uses plugin directories directly.
+
+These structural checks do not establish harness compatibility or skill behavior.

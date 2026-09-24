@@ -20,7 +20,7 @@ Each skill is an immediate child of `skills/` so Codex and Claude can discover
 it from the marketplace without generated wrappers.
 
 `assisted-installer-skills` contains reusable, independently usable skills.
-Separate workflow plugins can provide end-to-end orchestration. A workflow
+`assisted-installer-workflows` contains end-to-end orchestration. A workflow
 uses shared skills through their documented public contracts and normal harness
 discovery, instruction loading, and invocation. Avoid private installation paths
 and on-disk handoffs. A skill explicitly named for a workflow step is

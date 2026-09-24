@@ -11,6 +11,9 @@ required for installation.
 
 - [`assisted-installer-skills`](plugins/assisted-installer-skills/) contains
   shared, independently usable skills.
+- [`assisted-installer-workflows`](plugins/assisted-installer-workflows/)
+  contains interactive, multi-step workflows and depends on shared skills when
+  needed.
 
 ## Use as an external plugin
 
@@ -34,9 +37,10 @@ Or add a local clone:
 /plugin marketplace add /path/to/assisted-installer-agentic
 ```
 
-Then install the plugin:
+Then install the plugins:
 
 ```text
+/plugin install assisted-installer-workflows@assisted-installer
 /plugin install assisted-installer-skills@assisted-installer
 ```
 
@@ -56,7 +60,7 @@ Or add a local clone:
 codex plugin marketplace add /path/to/assisted-installer-agentic
 ```
 
-Then install `assisted-installer-skills` from `assisted-installer` in your harness's
+Then install the desired plugins from `assisted-installer` in your harness's
 plugin browser. See [Codex marketplace instructions](https://developers.openai.com/plugins/build/plugins#add-a-marketplace-from-the-cli).
 
 ### Marketplace details
@@ -64,8 +68,9 @@ plugin browser. See [Codex marketplace instructions](https://developers.openai.c
 The repository has native marketplace catalogs for both hosts:
 `.claude-plugin/marketplace.json` is the Claude Code catalog and
 `.agents/plugins/marketplace.json` is the Codex catalog. Both use the stable
-marketplace name `assisted-installer` and expose the shared-skills plugin under
-`plugins/`.
+marketplace name `assisted-installer` and expose both plugins under `plugins/`.
+The workflows plugin declares the shared-skills plugin as a Claude dependency;
+Codex users should install both plugins when a workflow requires shared skills.
 
 If this path was previously registered under a different marketplace name,
 remove the old configured name shown by `codex plugin marketplace list` before

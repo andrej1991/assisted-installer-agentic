@@ -12,6 +12,11 @@ plugins/
     .codex-plugin/plugin.json
     skills/
       <skill>/SKILL.md              # shared, independently usable skill
+  assisted-installer-workflows/
+    .claude-plugin/plugin.json
+    .codex-plugin/plugin.json
+    skills/
+      <skill>/SKILL.md              # discoverable workflow and contract
 .agents/plugins/marketplace.json
 .claude-plugin/marketplace.json
 scripts/                     # deterministic validation and isolation tests
@@ -29,9 +34,9 @@ scripts/                     # deterministic validation and isolation tests
   stop the dependent step and report the missing prerequisite. Delegated steps
   must pass this requirement to the worker.
 - Keep shared skills in `assisted-installer-skills` and end-to-end orchestration
-  in separate workflow plugins. Declare required shared-plugin dependencies in
-  the Claude manifest; do not invent unsupported cross-plugin dependency fields
-  for Codex.
+  in `assisted-installer-workflows`. Declare required shared-plugin dependencies
+  in the Claude manifest; do not invent unsupported cross-plugin dependency
+  fields for Codex.
 - Keep plugin Markdown references relative and inside their plugin so they
   work after installation. Refer to other plugins' skills through discovery and
   invocation, not filesystem links. Repository documentation may link across plugins.

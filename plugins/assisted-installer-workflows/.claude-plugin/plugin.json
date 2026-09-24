@@ -1,0 +1,12 @@
+{
+  "name": "assisted-installer-workflows",
+  "version": "0.6.0",
+  "description": "The Assisted Installer team's standalone workflows for local coding harnesses and hosted agent platforms.",
+  "author": {
+    "name": "OpenShift Assisted Installer team"
+  },
+  "license": "MIT",
+  "dependencies": [
+    "assisted-installer-skills"
+  ]
+}

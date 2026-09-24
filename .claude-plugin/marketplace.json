@@ -10,6 +10,10 @@
   },
   "plugins": [
     {
+      "name": "assisted-installer-workflows",
+      "source": "./plugins/assisted-installer-workflows"
+    },
+    {
       "name": "assisted-installer-skills",
       "source": "./plugins/assisted-installer-skills"
     }

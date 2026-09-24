@@ -1,0 +1,22 @@
+{
+  "name": "assisted-installer-workflows",
+  "version": "0.6.0",
+  "description": "The Assisted Installer team's standalone workflows for local coding harnesses and hosted agent platforms.",
+  "author": {
+    "name": "OpenShift Assisted Installer team"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Assisted Installer Workflows",
+    "shortDescription": "Reusable, bounded workflows for Assisted Installer engineering teams.",
+    "longDescription": "Provides portable engineering workflows for local coding harnesses and hosted agent platforms.",
+    "developerName": "OpenShift Assisted Installer team",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write", "Read"],
+    "defaultPrompt": [
+      "Use an Assisted Installer workflow to help with this engineering task.",
+      "Which Assisted Installer workflow best fits this task?"
+    ]
+  }
+}

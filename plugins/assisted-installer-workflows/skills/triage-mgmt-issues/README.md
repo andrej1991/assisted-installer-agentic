@@ -1,7 +1,7 @@
 # Triage MGMT Issues
 
 Finds all visible unassigned bugs in the `MGMT` Jira project in `To Do` or `New`
-status. Dispatches one subagent per selected issue using `jira-triage-complexity`
+status. Triages each selected issue using `jira-triage-complexity`
 and returns a summary table and JSON report of grades and failures.
 
 Requires Jira read access, the `assisted-installer-skills` plugin, and a harness
